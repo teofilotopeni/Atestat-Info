@@ -1,0 +1,107 @@
+:root {
+    --bgColor: rgb(20, 20, 20);
+    --elemColor: rgb(40, 40, 40);
+    --shadow: #222;
+    --themeColor: #bb86fc;
+    --secondaryColor: #00b6a4;
+    --text: white;
+}
+
+body {
+    margin: 0px;
+    font-family: 'Sriracha';
+    font-weight: 100;
+    font-size: 26px;
+    color: var(--text);
+    background-color: var(--bgColor);
+    user-select: none;
+}
+
+.Elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Panel {
+    position: relative;
+    width: 400px;
+    border-radius: 20px;
+    background-color: var(--elemColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+table {
+    font-size: 40px;
+    font-family: 'ABeeZee';
+    border-spacing: 5px 5px;
+}
+
+th {
+    height: 95px;
+    width: 95px;
+    border-radius: 10px;
+    background-color: var(--panel);
+}
+
+.Buttons {
+    height: 60px;
+    width: 100px;
+    border-radius: 20px;
+    font-family: 'Sriracha';
+    font-weight: 1000;
+    font-size: 26px;
+    color: var(--elemColor);
+    border: 4px solid var(--secondaryColor);
+    background-color: var(--secondaryColor);
+    box-shadow: 0 5px var(--shadow);
+    transition: background 0.3s linear, color 0.3s linear, transform 0.03s linear;
+}
+
+.Buttons:hover {
+    color: var(--text);
+    background-color: var(--panelColor);
+}
+
+.Buttons:active {
+    box-shadow: 0 3px var(--shadow);
+    transform: translateY(1px);
+}
+
+.Line {
+    position: absolute;
+    border-radius: 5px;
+    background-color: var(--themeColor);
+}
+
+#ShowResult {
+    position: absolute;
+    width: 14px;
+    height: 300px;
+    border-radius: 5px;
+    background-color: var(--secondaryColor);
+}
+
+@media (max-width: 1000px) {
+    .Elements {
+        height: 1000px;
+        flex-direction: column;
+    }
+
+    .Panel {
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+@media (min-width: 1000px) {
+    .Panel {
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+}

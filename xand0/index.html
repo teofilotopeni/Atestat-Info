@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>X and 0</title>
+  <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="design.css">
+  <script type="text/javascript" src="functions.js"></script>
+</head>
+
+<body onload="Start()">
+  <div class="Elements">
+    <div class="Panel" style="height: 400px;">
+      <div class="Line" style="left: 138px; width: 20px; height: 320px;"></div>
+      <div class="Line" style="right: 138px; width: 20px; height: 320px;"></div>
+      <div class="Line" style="top: 138px; width: 320px; height: 20px;"></div>
+      <div class="Line" style="bottom: 138px; width: 320px; height: 20px;"></div>
+      <div id="ShowResult" style="display: none"></div>
+      <table>
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="Panel" style="height: 250px;">
+      <div id="Score" style="margin-top: 10px; height: 0">
+        Score&nbsp&nbsp 0 : 0
+      </div>
+      <div id="Next" style="margin-top: 60px; height: 0">
+        Next: &nbsp&nbspX
+      </div>
+      <div>
+        <button class="Buttons" style="margin-top: 70px;" onclick="Reset()">Reset</button>
+      </div>
+    </div>
+
+    <div class="Panel" style="height: 250px; display: none;">
+      <div id="Winner" style="margin-top: 0px; height: 0">
+        Winner
+      </div>
+      <div>
+        <button class="Buttons" style="margin-top: 80px;" onclick="ClearMap()">Ok</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

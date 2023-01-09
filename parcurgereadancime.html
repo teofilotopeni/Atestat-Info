@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Your description">
+    <meta name="author" content="Your name">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+
+    <!-- Webpage Title -->
+    <title>Parcurgerea in adancime</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+
+
+
+    <!-- Favicon  -->
+    <link rel="icon" href="images/favicon.png">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark" aria-label="Main navigation">
+        <div class="container">
+
+            <!-- Image Logo -->
+            <a class="navbar-brand logo-image" href="index.html"><img src="images/drona.jpg" alt="alternative"></a>
+
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Desi</a> -->
+
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Acasa</a>
+                    </li>
+                </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+
+    <!-- Header -->
+    <header class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>Parcurgerea in adancime</h1>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+
+
+    <!-- Basic -->
+    <div class="ex-basic-1 pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <!--
+                        <pre><code>
+                        -->
+                    <pre class="line-numbers"><code class="language-c">#include &lt;iostream>
+#include &lt;vector>
+#include &lt;bitset>
+using namespace std;
+
+// gaseste numarul de componente conexe ale unui graf neorientat parcurgand pe fiecare in adancime
+
+const int size = 100000;
+bitset &lt;size> finded;
+vector&lt;int> nodes[size];
+
+void run(int i) { // parcurge in adancime
+    finded[i] = true;
+    for (int to : nodes[i]) {
+        if (!finded[to]) {
+            run(to);
+        }
+    }
+}
+
+int main() {
+    int nr, m, conex = 0;
+    for (cin >> nr >> m; m; --m) { // citire noduri
+        int x, y;
+        cin >> x >> y;
+        nodes[x].push_back(y);
+        nodes[y].push_back(x);
+    }
+    
+    for (int i = 1; i &lt;= nr; ++i) { // pentru fiecare nod neparcurs notam o componenta conexa
+        if (!finded[i]) {
+            run(i);
+            ++conex;
+        }
+    }
+    cout &lt;&lt; conex &lt;&lt; '\n';
+    return 0;
+}                </code></pre>
+                    <p>
+                        Acest algoritm primeste un graf neorientat si returneaza numarul de componente conexe.
+                    </p>
+                    <h2 class="mb-3">Cum am gandit acest algoritm?</h2>
+                    <p>La inceput citim muchile (cele 2 elemete de la capatul muchiei)
+                        si le unim adaugandu-l pe fiecare in lista de vecini a celuilalt.
+                        Ne folosim de alt vector pentru a retine daca elementele au mai fost parcurse si parcurgem cu un for toate elementele.
+                        Daca un element nu a mai fost parcurs adaugam unu la numarul componentelor conexe si incepem parcurgerea in adancime din el.
+                        Parcurgerea in adancime se realizeaza cu o functie recursiva.
+                        Aceasta marcheaza nodul actual ca parcurs, apoi intr-un for verifica toti vecinii lui
+                        si cheama functia recursiva pentru cei neparcursi.
+                    </p>
+                    <p class="mb-4">Astfel avem o complexitate in timp de O(n + m) si a memoriei de O(n^2).</p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of basic -->
+
+
+    <!-- Basic -->
+    <div class="ex-basic-1 pt-3 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h2 class="mb-4">La ce foloseste acest algoritm?</h2>
+                    <ul class="list-unstyled li-space-lg mb-5">
+                        <li class="d-flex">
+                            <i class="fas fa-square"></i>
+                            <div class="flex-grow-1"><strong>Rețele de calculatoare</strong>
+                                (stabilirea unei topologii fără bucle / arbore de acoperire)</div>
+                        </li>
+                        <li class="d-flex">
+                            <i class="fas fa-square"></i>
+                            <div class="flex-grow-1"><strong>Pagini Web</strong>
+                                (algoritmi de căutare - Google PageRank)</div>
+                        </li>
+                        <li class="d-flex">
+                            <i class="fas fa-square"></i>
+                            <div class="flex-grow-1"><strong>Rețele sociale</strong>
+                                (sugestii de prietenie pe Facebook)</div>
+                        </li>
+                        <li class="d-flex">
+                            <i class="fas fa-square"></i>
+                            <div class="flex-grow-1"><strong>Hărți cu drumuri</strong>
+                                (drum minim între două localități)</div>
+                        </li>
+                        <li class="d-flex">
+                            <i class="fas fa-square"></i>
+                            <div class="flex-grow-1"><strong>Rețele de transport</strong>
+                                (retele de curieri)</div>
+                        </li>
+                    </ul>
+
+                    <a class="btn-solid-reg mb-5" href="index.html">Acasa</a>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of basic -->
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small">Copyright © Teofil 2022</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small">Distributed by: <a href="https://themewagon.com/"
+                            target="_blank"><u>Themewagon</u></a></p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+
+
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="images/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="js/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="js/prism.js"></script>
+</body>
+
+</html>
